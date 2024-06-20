@@ -11,7 +11,9 @@ root.render(
         {/*<App />*/}
         <StarRating 
         maxRating={5} 
-        message={["Terrible", "Bad", "Okay", "Very Good", "Amazing"]}/>
+        message={["Terrible", "Bad", "Okay", "Very Good", "Amazing"]}
+        />
+        
         <StarRating 
         maxRating={10} 
         defaultRating={3}
