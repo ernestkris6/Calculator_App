@@ -1,10 +1,22 @@
-import React, { StrictMode } from 'react';
+import React, { StrictMode, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import App from './App';
 // import './index.css'
 
 import StarRating from './StarRating';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+function Test(){
+
+    const [moviesRating, setMoviesRating] = useState(0);
+
+    return(
+        <div>
+       <StarRating color='blue' maxRating={10} onSetRating={setMoviesRating} />
+       <p>This movie has {moviesRating} rating</p>
+       </div>
+    )
+}
 
 root.render(
     <StrictMode>
@@ -20,5 +32,8 @@ root.render(
         color='red' 
         size={24} 
         className="test"/>
+
+        <Test />
+        
     </StrictMode>
 );   
