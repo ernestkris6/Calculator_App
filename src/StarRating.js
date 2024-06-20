@@ -42,7 +42,8 @@ export default function StarRating({
     return(
         <div style={containerStyle} className={className}>
             <div style={starContainerStyle}>
-               {Array.from({length: maxRating }, (_, i)=>  <Star 
+               {Array.from({length: maxRating }, (_, i)=>  
+               <Star 
                key={i} 
                full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
                color={color}
