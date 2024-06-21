@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 // import './index.css'
 
 import StarRating from './StarRating';
+import Rate from './Rate';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function Test(){
@@ -34,6 +35,6 @@ root.render(
         className="test"/>
 
         <Test />
-        
+        <Rate maxRating={5}/>
     </StrictMode>
 );   
