@@ -21,7 +21,7 @@ function Test(){
 
 root.render(
     <StrictMode>
-        {/*<App />*/}
+        {/* <App /> */}
         <StarRating 
         maxRating={5} 
         message={["Terrible", "Bad", "Okay", "Very Good", "Amazing"]}
@@ -35,6 +35,6 @@ root.render(
         className="test"/>
 
         <Test />
-        <Rate maxRating={5}/>
+        <Rate maxRating={5}/> 
     </StrictMode>
 );   
