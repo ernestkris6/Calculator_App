@@ -8,22 +8,22 @@ import Rate from './TextExpander';
 import TextExpander from './TextExpander';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// function Test(){
+function Test(){
 
-//     const [moviesRating, setMoviesRating] = useState(0);
+    const [moviesRating, setMoviesRating] = useState(0);
 
-//     return(
-//         <div>
-//        <StarRating color='blue' maxRating={10} onSetRating={setMoviesRating} />
-//        <p>This movie has {moviesRating} rating</p>
-//        </div>
-//     )
-// }
+    return(
+        <div>
+       <StarRating color='blue' maxRating={10} onSetRating={setMoviesRating} />
+       <p>This movie has {moviesRating} rating</p>
+       </div>
+    )
+}
 
 root.render(
     <StrictMode>
         {/* <App /> */}
-        {/* <StarRating 
+        <StarRating 
         maxRating={5} 
         message={["Terrible", "Bad", "Okay", "Very Good", "Amazing"]}
         />
@@ -36,7 +36,7 @@ root.render(
         className="test"/>
 
         <Test />
-        <Rate maxRating={5}/>  */}
+        <Rate maxRating={5}/> 
         <TextExpander />
     </StrictMode>
 );   
