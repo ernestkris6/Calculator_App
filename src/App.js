@@ -55,13 +55,41 @@ const KEY = "f84fc31d";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState("");
+  const query = "djdjds";
 
-  useEffect(()=> {
-    fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`)
-    .then((res)=> res.json())
-    .then((data) => setMovies(data.Search));
+  // useEffect(()=> {
+  //   fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`)
+  //   .then((res)=> res.json())
+  //   .then((data) => setMovies(data.Search));
+  // }, [])
+
+  useEffect(function (){
+    async function fetchMovies(){
+      try{
+      setIsPending(true)
+      const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
+      
+      if(!res.ok) throw new Error("Something went wrong with fetching movies")
+        
+        
+      const data = await res.json();
+      if(data.Response === "False") throw new Error ("Movie not found");
+      
+      setMovies(data.Search);
+      console.log(data);
+      } 
+      catch(err){
+        console.log(err.message);
+        setError(err.message)
+      }
+      finally{
+        setIsPending(false)
+      }
+    }
+    fetchMovies();
   }, [])
-
 
  
 
@@ -74,7 +102,10 @@ export default function App() {
 
       <Main>
         <Box>
-          <MovieList movies={movies} />
+          {/* {isPending ? <Loader /> : <MovieList movies={movies} />} */}
+          {isPending && <Loader />}
+          {!isPending && !error && <MovieList movies={movies} /> }
+          {error && <ErrorMessage message={error} />}
         </Box>
 
         <Box>
@@ -86,6 +117,24 @@ export default function App() {
   );
 }
 
+
+function Loader(){
+  return(
+    <div>
+      <h3 className="loader">LOADING MOVIES...</h3>
+    </div>
+  )
+} 
+
+function ErrorMessage({message}){
+  return (
+    <div>
+      <h3 className="error">
+        <span>💔</span>{message}
+      </h3>
+    </div>
+  )
+}
 
 
 function NavBar({ children }) {
