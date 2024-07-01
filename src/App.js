@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 const tempMovieData = [
+
   {
     imdbID: "tt1375666",
     Title: "Inception",
@@ -93,7 +94,6 @@ export default function App() {
   }
 
 
-
   useEffect(function (){
     async function fetchMovies(){
       try{
@@ -173,7 +173,8 @@ function ErrorMessage({message}){
   return (
     <div>
       <h3 className="error">
-        <span>💔</span>{message}
+        <span>💔</span>
+        {message}
       </h3>
     </div>
   )
@@ -292,6 +293,7 @@ function MovieDetails({selectedId, onCloseMovie}){
 const [movie, setMovie] = useState({})
 
 const {
+
   Title:title,
   Year: year,
   Poster: poster,
