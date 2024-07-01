@@ -295,7 +295,14 @@ const {
   Title:title,
   Year: year,
   Poster: poster,
-  
+  Runtime: runtime,
+  imdbRating,
+  Plot: plot,
+  Released: released,
+  Actors: actors,
+  Director: director,
+  Genre: genre,
+
 } = movie;
 
   useEffect(function() {
@@ -305,7 +312,7 @@ const {
         setMovie(data);
       }
       getMovieDetails()
-  },[])
+  },[selectedId])
 
   return(
     <div className="details">
