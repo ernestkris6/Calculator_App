@@ -321,11 +321,11 @@ function handleAdd(){
     year,
     poster,
     imdbRating: Number(imdbRating),
-    runtime,
+    runtime: Number(runtime.split(" ".at(0)))
   }
 
   onAddWatched(newWatchedMovie)
-  console.log(onAddWatched);
+  console.log(newWatchedMovie);
 }
 
 
@@ -422,8 +422,8 @@ function WatchedMoviesList({ watched }) {
 function WatchedMovie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie.poster} alt={`${movie.title} poster`} />
+      <h3>{movie.title}</h3>
       <div>
         <p>
           <span>⭐️</span>
