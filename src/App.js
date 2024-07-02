@@ -94,6 +94,10 @@ export default function App() {
     setSelectedId(null)
   }
 
+  function handleAddWatched(movie){
+    setWatched(movies=> [...movies, movie])
+  }
+
 
   useEffect(function (){
     async function fetchMovies(){
@@ -148,7 +152,7 @@ export default function App() {
         </Box>
 
         <Box>
-         {selectedId ? (<MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie}/>) :  
+         {selectedId ? (<MovieDetails onAddWatched={handleAddWatched} selectedId={selectedId} onCloseMovie={handleCloseMovie}/>) :  
          (
          <>
           <WatchedSummary watched={watched} />
@@ -289,7 +293,7 @@ function Movie({ movie, onSelectMovie }) {
   );
 }
 
-function MovieDetails({selectedId, onCloseMovie}){
+function MovieDetails({selectedId, onCloseMovie, onAddWatched}){
 
 const [movie, setMovie] = useState({});
 const [isPending, setIsPending] = useState(false);
@@ -308,6 +312,23 @@ const {
   Genre: genre,
 
 } = movie;
+
+function handleAdd(){
+
+  const newWatchedMovie = {
+    imdbID: selectedId,
+    title,
+    year,
+    poster,
+    imdbRating: Number(imdbRating),
+    runtime,
+  }
+
+  onAddWatched(newWatchedMovie)
+  console.log(onAddWatched);
+}
+
+
 
   useEffect(function() {
       async function getMovieDetails(){
@@ -344,6 +365,7 @@ const {
     
   <div className="rating">
     <StarRating maxRating={10} size={24}/>
+    <button className="btn-add" onClick={handleAdd}>Add to watched list</button>
   </div>
     <p>
       <em>{plot}</em>
