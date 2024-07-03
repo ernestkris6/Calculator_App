@@ -322,7 +322,7 @@ function handleAdd(){
     poster,
     imdbRating: Number(imdbRating),
     runtime: Number(runtime.split(" ").at(0)),
-    userRating,
+    //userRating,
   }
 
   onAddWatched(newWatchedMovie)
