@@ -95,7 +95,7 @@ export default function App() {
   }
 
   function handleAddWatched(movie){
-    setWatched(movies=> [...movies, movie])
+    setWatched(movies => [...movies, movie])
   }
 
 
