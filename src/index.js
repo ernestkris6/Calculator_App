@@ -4,8 +4,8 @@ import App from './App';
 import './index.css'
 
 import StarRating from './StarRating';
-import Rate from './TextExpander';
-import TextExpander from './TextExpander';
+//import Rate from './TextExpander';
+//import TextExpander from './TextExpander';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function Test(){
@@ -14,7 +14,7 @@ function Test(){
 
     return(
         <div>
-       <StarRating color='blue' maxRating={10} onSetRating={setMoviesRating} />
+       <StarRating color='blue' maxRating={10} onSetRating={()=>setMoviesRating} />
        <p>This movie has {moviesRating} rating</p>
        </div>
     )
@@ -40,3 +40,5 @@ root.render(
         <TextExpander /> */}
     </StrictMode>
 );   
+
+

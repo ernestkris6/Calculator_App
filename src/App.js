@@ -297,6 +297,7 @@ function MovieDetails({selectedId, onCloseMovie, onAddWatched}){
 
 const [movie, setMovie] = useState({});
 const [isPending, setIsPending] = useState(false);
+const [userRating, setUserRating] = useState("")
 
 const {
 
@@ -327,6 +328,7 @@ function handleAdd(){
 
   onAddWatched(newWatchedMovie)
   console.log(newWatchedMovie);
+  onCloseMovie();
 }
 
 
@@ -365,7 +367,7 @@ function handleAdd(){
   <section>
     
   <div className="rating">
-    <StarRating maxRating={10} size={24}/>
+    <StarRating maxRating={10} size={24} onSetRating={setUserRating}/>
     <button className="btn-add" onClick={handleAdd}>Add to watched list</button>
   </div>
     <p>
