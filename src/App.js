@@ -364,7 +364,18 @@ function handleAdd(){
         setIsPending(false)
       }
       getMovieDetails();
-  },[selectedId])
+  },[selectedId]);
+
+  useEffect(function() {
+    if(!title) return;
+
+      document.title = `Movie | ${title}`;
+
+      return function() {
+        document.title = `Use Popcorn`;
+        console.log(`Clean up running for movie ${title}`);
+      }
+  },[title])
 
   return(
     <div className="details">
