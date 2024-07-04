@@ -87,7 +87,7 @@ export default function App() {
   // console.log("During render");
 
   function handleSelectMovie(id){
-      setSelectedId(id === selectedId ? null : id )
+      setSelectedId((selectedId)=> id === selectedId ? null : id )
   }
 
   function handleCloseMovie(){
@@ -95,11 +95,11 @@ export default function App() {
   }
 
   function handleAddWatched(movie){
-    setWatched(movies => [...movies, movie])
+    setWatched(watched => [...watched, movie])
   }
 
   function handleDeleteMovies(id){
-    setWatched(watched => watched.filter(movie => movie.imdbID !== id))
+    setWatched((watched) => watched.filter(movie => movie.imdbID !== id));
   }
 
   useEffect(function (){
