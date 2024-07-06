@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 
-/* const tempMovieData = [
+/* 
+const tempMovieData = [
 
   {
     imdbID: "tt1375666",
@@ -47,7 +48,8 @@ const tempWatchedData = [
     imdbRating: 8.5,
     userRating: 9,
   },
-];*/
+];
+*/
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
