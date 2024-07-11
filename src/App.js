@@ -253,6 +253,24 @@ const {
 
 } = movie;
 
+
+/*Don't do this in hooks */
+//if(imdbRating > 8) [top, setIsTop] = useState(true)
+
+//if(imdbRating > 8) return <p>Greatest ever</p>
+
+
+//const [isTop, setIsTop] = useState( imdbRating > 8);
+//console.log(isTop); //either true or false on select
+
+// useEffect(function(){
+//   setIsTop(imdbRating > 8)
+// }, [imdbRating]);
+
+const isTop = imdbRating > 8;
+console.log(isTop);
+
+const [averageRating, setAverageRating] = useState(0)
 function handleAdd(){
 
   const newWatchedMovie = {
@@ -267,7 +285,7 @@ function handleAdd(){
 
   onAddWatched(newWatchedMovie)
   console.log(newWatchedMovie);
-  onCloseMovie();
+  //onCloseMovie();
 }
 
 useEffect(function(){
@@ -325,6 +343,7 @@ useEffect(function(){
       <p>{genre}</p>
       
       <p><span>⭐</span>{imdbRating} IMDb Rating</p>
+      <p>{averageRating}</p>
     </div>
   </header>
 
