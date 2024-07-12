@@ -11,6 +11,7 @@ export function useMovies(query) {
 
     useEffect(
         function (){
+            // callback?.();
         const controller = new AbortController();
     
         async function fetchMovies(){
