@@ -269,6 +269,12 @@ const [movie, setMovie] = useState({});
 const [isPending, setIsPending] = useState(false);
 const [userRating, setUserRating] = useState("");
 
+const countRef = useRef(0);
+
+useEffect(function(){
+  countRef.current = countRef.current + 1;
+}, [])
+
 const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
 console.log(isWatched);
 
@@ -318,6 +324,7 @@ function handleAdd(){
     imdbRating: Number(imdbRating),
     runtime: Number(runtime.split(" ").at(0)),
     userRating,
+    countRatingDecisions: countRef.current,
   }
 
   onAddWatched(newWatchedMovie)
