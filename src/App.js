@@ -272,8 +272,10 @@ const [userRating, setUserRating] = useState("");
 const countRef = useRef(0);
 
 useEffect(function(){
-  countRef.current = countRef.current + 1;
-}, [])
+  // countRef.current = countRef.current + 1;
+  // countRef.current = countRef.current += 1;
+  if(userRating) countRef.current = countRef.current++;
+}, [userRating])
 
 const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
 console.log(isWatched);
