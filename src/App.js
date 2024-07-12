@@ -10,11 +10,15 @@ const KEY = "f84fc31d";
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null)
-
+  
+  //const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(function(){
+    const storedValue = localStorage.getItem('watched');
+    return JSON.parse(storedValue)
+  });
 
   function handleSelectMovie(id){
       setSelectedId((selectedId)=> id === selectedId ? null : id )
@@ -26,11 +30,17 @@ export default function App() {
 
   function handleAddWatched(movie){
     setWatched(watched => [...watched, movie])
+
+    //localStorage.setItem("watched", JSON.stringify([...watched, movie]))
   }
 
   function handleDeleteMovies(id){
     setWatched((watched) => watched.filter(movie => movie.imdbID !== id));
   }
+
+  useEffect(function() {
+    localStorage.setItem("watched", JSON.stringify(watched))
+  }, [watched])
 
 
   useEffect(function (){
@@ -164,6 +174,12 @@ function Logo() {
 
 function Search({query, setQuery}) {
 
+  useEffect(function(){
+    const el = document.querySelector('.search');
+    console.log(el);
+    el.focus();
+  }, [])
+
   return (
     <input
       className="search"
@@ -270,7 +286,8 @@ const {
 const isTop = imdbRating > 8;
 console.log(isTop);
 
-const [averageRating, setAverageRating] = useState(0)
+//const [averageRating, setAverageRating] = useState(0)
+
 function handleAdd(){
 
   const newWatchedMovie = {
@@ -285,7 +302,11 @@ function handleAdd(){
 
   onAddWatched(newWatchedMovie)
   console.log(newWatchedMovie);
-  //onCloseMovie();
+  onCloseMovie();
+
+  //useState hooks
+  // setAverageRating(Number(imdbRating));
+  // setAverageRating((averageRating)=> averageRating + imdbRating / 2);
 }
 
 useEffect(function(){
@@ -343,7 +364,7 @@ useEffect(function(){
       <p>{genre}</p>
       
       <p><span>⭐</span>{imdbRating} IMDb Rating</p>
-      <p>{averageRating}</p>
+      {/* <p>{averageRating}</p> */}
     </div>
   </header>
 
