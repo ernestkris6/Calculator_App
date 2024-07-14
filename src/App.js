@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
-import { useMovies } from "./useMovies";
+import { useMovies } from "./Custom-hooks/useMovies";
 
 
 const average = (arr) =>
