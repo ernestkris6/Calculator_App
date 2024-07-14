@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-
+//API Key
 const KEY = "f84fc31d";
 
 export function useMovies(query) {
@@ -12,6 +12,7 @@ export function useMovies(query) {
     useEffect(
         function (){
             // callback?.();
+            //Prevents race condition
         const controller = new AbortController();
     
         async function fetchMovies(){
