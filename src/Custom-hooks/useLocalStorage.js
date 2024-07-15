@@ -4,8 +4,9 @@ import {useState, useEffect} from 'react'
 export function useLocalStoragState(initialState, key){
 
     const [value, setvalue] = useState(function(){
-        const storedValue = localStorage.getItem('watched');
-          return JSON.parse(storedValue)
+        const storedValue = localStorage.getItem(key);
+        // console.log(storedValue);
+          return storedValue ? JSON.parse(storedValue) : initialState;
         });
 
     useEffect(function() {
