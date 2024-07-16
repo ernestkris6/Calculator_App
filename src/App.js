@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 import { useMovies } from "./Custom-hooks/useMovies";
 import { useLocalStoragState } from "./Custom-hooks/useLocalStorage";
+import { useKey } from "./Custom-hooks/useKey";
 
 
 const average = (arr) =>
@@ -284,21 +285,7 @@ function handleAdd(){
   // setAverageRating((averageRating)=> averageRating + imdbRating / 2);
 }
 
-useEffect(function(){
-
-  function callback(e){
-    if(e.code === "Escape"){
-      onCloseMovie();
-      console.log("CLOSING");
-    }
-  }
-  document.addEventListener("keydown", callback )
-
-  return function(){
-    document.removeEventListener("keydown", callback)
-  }
-}, [onCloseMovie]);
-
+useKey();
 
   useEffect(function() {
       async function getMovieDetails(){
