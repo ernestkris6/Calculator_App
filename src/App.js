@@ -123,23 +123,30 @@ function Search({query, setQuery}) {
   
   const inputEl = useRef(null);
 
-  useEffect(function(){
-    //console.log(inputEl.current);
+  useKey('Enter', function(){
+    if(document.activeElement === inputEl.current) return;
 
-    function callback(e){
-      if(e.code === 'Enter'){
-        if(document.activeElement === inputEl.current) return;
+         inputEl.current.focus();
+         setQuery("")
+  })
 
-        inputEl.current.focus();
-        setQuery("")
-      }
- }
+//   useEffect(function(){
+//     //console.log(inputEl.current);
 
-      document.addEventListener('keydown', callback)
+//     function callback(e){
+//       if(e.code === 'Enter'){
+//         if(document.activeElement === inputEl.current) return;
 
-      return () => document.addEventListener('keydown', callback)
+//         inputEl.current.focus();
+//         setQuery("")
+//       }
+//  }
 
-  }, [setQuery])
+//       document.addEventListener('keydown', callback)
+
+//       return () => document.addEventListener('keydown', callback)
+
+//   }, [setQuery])
   // useEffect(function(){
   //   const el = document.querySelector('.search');
   //   console.log(el);
@@ -285,7 +292,7 @@ function handleAdd(){
   // setAverageRating((averageRating)=> averageRating + imdbRating / 2);
 }
 
-useKey();
+useKey('Escape', onCloseMovie);
 
   useEffect(function() {
       async function getMovieDetails(){
